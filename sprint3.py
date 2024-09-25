@@ -1,7 +1,9 @@
-exercises = []
+#CRUD de exercícios clínicos
+
+exercises = ["Coordenação visual", "Precisão manual"]
 
 def add_exercise():
-    exercise = input("Digite o nome do exercício: ")
+    exercise = input("Digite o nome do exercício clínico: ")
     exercises.append(exercise)
     print(f"Exercício '{exercise}' adicionado com sucesso!")
 
@@ -9,7 +11,7 @@ def list_exercises():
     if not exercises:
         print("Nenhum exercício encontrado.")
     else:
-        print("Lista de exercícios:")
+        print("Lista de exercícios clínicos:")
         for i, exercise in enumerate(exercises, 1):
             print(f"{i}. {exercise}")
 
@@ -43,7 +45,7 @@ def delete_exercise():
         print("Por favor, insira um número válido.")
 
 def show_menu():
-    print("\n--- Menu de Exercícios ---")
+    print("\n--- Menu de Exercícios Clínicos ---")
     print("1 - Adicionar exercício")
     print("2 - Listar exercícios")
     print("3 - Editar exercício")
@@ -69,6 +71,7 @@ def main():
         else:
             print("Opção inválida! Tente novamente.")
 
+
+
 if __name__ == "__main__":
     main()
-
