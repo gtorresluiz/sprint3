@@ -1,4 +1,4 @@
-# CRUD de exercícios clínicos (versão com dicionário)
+# CRUD de exercícios clínicos
 
 exercises = {
     1: "Coordenação visual",
