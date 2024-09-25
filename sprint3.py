@@ -1,10 +1,14 @@
-#CRUD de exercícios clínicos
+# CRUD de exercícios clínicos (versão com dicionário)
 
-exercises = ["Coordenação visual", "Precisão manual"]
+exercises = {
+    1: "Coordenação visual",
+    2: "Precisão manual"
+}
 
 def add_exercise():
     exercise = input("Digite o nome do exercício clínico: ")
-    exercises.append(exercise)
+    new_id = max(exercises.keys(), default=0) + 1  
+    exercises[new_id] = exercise
     print(f"Exercício '{exercise}' adicionado com sucesso!")
 
 def list_exercises():
@@ -12,21 +16,21 @@ def list_exercises():
         print("Nenhum exercício encontrado.")
     else:
         print("Lista de exercícios clínicos:")
-        for i, exercise in enumerate(exercises, 1):
-            print(f"{i}. {exercise}")
+        for key, exercise in exercises.items():
+            print(f"{key}. {exercise}")
 
 def edit_exercise():
     list_exercises()
     if not exercises:
         return None
     try:
-        exercise_index = int(input("Digite o número do exercício que deseja editar: ")) - 1
-        if 0 <= exercise_index < len(exercises):
+        exercise_id = int(input("Digite o número do exercício que deseja editar: "))
+        if exercise_id in exercises:
             new_name = input("Digite o novo nome do exercício: ")
-            exercises[exercise_index] = new_name
+            exercises[exercise_id] = new_name
             print(f"Exercício atualizado para '{new_name}' com sucesso!")
         else:
-            print("Número inválido.")
+            print("ID inválido.")
     except ValueError:
         print("Por favor, insira um número válido.")
 
@@ -35,12 +39,12 @@ def delete_exercise():
     if not exercises:
         return None
     try:
-        exercise_index = int(input("Digite o número do exercício que deseja deletar: ")) - 1
-        if 0 <= exercise_index < len(exercises):
-            deleted = exercises.pop(exercise_index)
+        exercise_id = int(input("Digite o número do exercício que deseja deletar: "))
+        if exercise_id in exercises:
+            deleted = exercises.pop(exercise_id)
             print(f"Exercício '{deleted}' deletado com sucesso!")
         else:
-            print("Número inválido.")
+            print("ID inválido.")
     except ValueError:
         print("Por favor, insira um número válido.")
 
@@ -70,8 +74,6 @@ def main():
             break
         else:
             print("Opção inválida! Tente novamente.")
-
-
 
 if __name__ == "__main__":
     main()
