@@ -1,5 +1,6 @@
 # CRUD de exercícios clínicos
 
+#exemplos
 exercises = {
     1: "Coordenação visual",
     2: "Precisão manual"
